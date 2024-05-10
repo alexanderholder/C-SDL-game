@@ -12,5 +12,21 @@ You'll need to install the following:
 
 ## Running the game
 
-Compile with `clang main.c -I/opt/homebrew/include -L/opt/homebrew/lib -lSDL2 -lSDL2_ttf -o build/game`
+Compile with `make`
 Then run the game with `./build/game`
+
+## Project structure
+
+```
+game/
+├── assets/
+│ └── OpenSans_Condensed-Regular.ttf
+├── src/
+│ ├── main.c
+│ └── screens/
+│     └── start.c
+├── include/
+│   └── start.h
+└── build/
+    └── game
+```

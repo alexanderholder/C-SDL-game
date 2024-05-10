@@ -1,6 +1,5 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
-#include <stdio.h>
 
 void show_start_screen(SDL_Renderer *renderer, SDL_Window *window)
 {
@@ -15,7 +14,7 @@ void show_start_screen(SDL_Renderer *renderer, SDL_Window *window)
   }
 
   int font_size = window_height / 20;
-  TTF_Font *font = TTF_OpenFont("./assets/OpenSans_Condensed-Regular.ttf", font_size);
+  TTF_Font *font = TTF_OpenFont("../assets/OpenSans_Condensed-Regular.ttf", font_size);
   if (font == NULL)
   {
     printf("TTF_OpenFont Error: %s\n", TTF_GetError());
@@ -69,42 +68,4 @@ void show_start_screen(SDL_Renderer *renderer, SDL_Window *window)
       }
     }
   }
-}
-
-int main(int argc, char *argv[])
-{
-  if (SDL_Init(SDL_INIT_VIDEO) != 0)
-  {
-    printf("SDL_Init Error: %s\n", SDL_GetError());
-    return 1;
-  }
-
-  SDL_Window *window = SDL_CreateWindow("Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1024, 768, SDL_WINDOW_SHOWN);
-  if (window == NULL)
-  {
-    printf("SDL_CreateWindow Error: %s\n", SDL_GetError());
-    SDL_Quit();
-    return 1;
-  }
-
-  SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-  if (renderer == NULL)
-  {
-    printf("SDL_CreateRenderer Error: %s\n", SDL_GetError());
-    SDL_DestroyWindow(window);
-    SDL_Quit();
-    return 1;
-  }
-
-  SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-  SDL_RenderClear(renderer);
-  SDL_RenderPresent(renderer);
-  SDL_Delay(10000);
-
-  show_start_screen(renderer, window);
-
-  SDL_DestroyRenderer(renderer);
-  SDL_DestroyWindow(window);
-  SDL_Quit();
-  return 0;
 }
