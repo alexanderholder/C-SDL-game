@@ -4,7 +4,6 @@
 
 void show_start_screen(SDL_Renderer *renderer, SDL_Window *window)
 {
-  // Get the window size
   int window_width, window_height;
   SDL_GetWindowSize(window, &window_width, &window_height);
 
@@ -15,9 +14,7 @@ void show_start_screen(SDL_Renderer *renderer, SDL_Window *window)
     return;
   }
 
-  // Load a font
-  // Adjust the font size based on the window size
-  int font_size = window_height / 20; // adjust as needed
+  int font_size = window_height / 20;
   TTF_Font *font = TTF_OpenFont("./assets/OpenSans_Condensed-Regular.ttf", font_size);
   if (font == NULL)
   {
@@ -26,11 +23,7 @@ void show_start_screen(SDL_Renderer *renderer, SDL_Window *window)
     return;
   }
 
-  // Create a surface with the text
-  // Create a color for the text
   SDL_Color color = {255, 255, 255, 255}; // white
-
-  // Render the text
   SDL_Surface *surface = TTF_RenderText_Blended(font, "Press any key to start", color);
   if (surface == NULL)
   {
@@ -43,10 +36,15 @@ void show_start_screen(SDL_Renderer *renderer, SDL_Window *window)
   // Create a texture from the surface and render it
   SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
   SDL_Rect rect;
-  rect.w = window_width / 2;  // half of the window width
-  rect.h = window_height / 2; // half of the window height
-  rect.x = window_width / 4;  // centered horizontally
-  rect.y = window_height / 4; // centered vertically
+  rect.w = window_width / 2;
+  rect.h = window_height / 2;
+  rect.x = window_width / 4;
+  rect.y = window_height / 4;
+
+  SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // black
+
+  SDL_Rect bgRect = rect;
+  SDL_RenderFillRect(renderer, &bgRect);
 
   SDL_RenderCopy(renderer, texture, NULL, &rect);
 
