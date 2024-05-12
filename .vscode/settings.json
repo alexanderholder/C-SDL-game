@@ -2,6 +2,7 @@
   "files.associations": {
     "*.css": "tailwindcss",
     "stdio.h": "c",
-    "sdl.h": "c"
+    "sdl.h": "c",
+    "start.h": "c"
   }
 }
