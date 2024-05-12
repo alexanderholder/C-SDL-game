@@ -13,4 +13,4 @@ build/%.o: src/%.c
 	$(CC) -c $< -o $@ $(CFLAGS)
 
 clean:
-	rm -rf build
+	rm -rf build bin/game
