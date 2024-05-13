@@ -1,5 +1,5 @@
 CC = clang
-CFLAGS = -I/opt/homebrew/include -I./include
+CFLAGS = -I/opt/homebrew/include
 LDFLAGS = -L/opt/homebrew/lib -lSDL2 -lSDL2_ttf
 SRC = $(wildcard src/*.c src/screens/*.c)
 OBJ = $(patsubst src/%,build/%,$(SRC:.c=.o))
