@@ -3,7 +3,7 @@ CFLAGS = -I/opt/homebrew/include -I./include
 LDFLAGS = -L/opt/homebrew/lib -lSDL2 -lSDL2_ttf
 SRC = $(wildcard src/*.c src/screens/*.c)
 OBJ = $(patsubst src/%,build/%,$(SRC:.c=.o))
-TARGET = build/game
+TARGET = bin/game
 
 $(TARGET): $(OBJ)
 	$(CC) $^ -o $@ $(LDFLAGS)
